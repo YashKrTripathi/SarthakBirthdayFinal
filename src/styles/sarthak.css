@@ -1,0 +1,293 @@
+/* ========================================
+   SARTHAK CHARACTER — Silent Observer
+   ======================================== */
+
+/* Container: fixed overlay, no layout impact */
+.sarthak-container {
+    position: fixed;
+    z-index: 150;
+    pointer-events: none;
+    transition: left 1.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+                top 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity;
+}
+
+/* Character wrapper — receives pointer events */
+.sarthak-character {
+    pointer-events: auto;
+    cursor: pointer;
+    width: 110px;
+    height: auto;
+    position: relative;
+    transform-origin: center bottom;
+    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Image */
+.sarthak-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+/* ========================================
+   ANIMATION STATES
+   ======================================== */
+
+/* Entering — fade + slide up */
+.sarthak--entering {
+    animation: sarthak-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sarthak-enter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Exiting — fade out down */
+.sarthak--exiting {
+    animation: sarthak-exit 0.6s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+@keyframes sarthak-exit {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+}
+
+/* Breathing — very subtle idle */
+.sarthak--breathing {
+    animation: sarthak-breathe 4s ease-in-out infinite;
+}
+
+@keyframes sarthak-breathe {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Idle — completely still */
+.sarthak--idle {
+    transform: translateY(0);
+}
+
+/* Tilt — slight head tilt on hover */
+.sarthak--tilt {
+    animation: sarthak-tilt 0.6s ease-in-out forwards;
+}
+
+@keyframes sarthak-tilt {
+    0% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(6deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Smirk — tiny scale shift */
+.sarthak--smirk {
+    animation: sarthak-smirk 0.5s ease forwards;
+}
+
+@keyframes sarthak-smirk {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03) translateY(-2px);
+    }
+}
+
+/* Eye roll — subtle lateral sway */
+.sarthak--eyeroll {
+    animation: sarthak-eyeroll 1s ease-in-out forwards;
+}
+
+@keyframes sarthak-eyeroll {
+    0% {
+        transform: rotate(0deg) translateX(0);
+    }
+    30% {
+        transform: rotate(-3deg) translateX(3px);
+    }
+    60% {
+        transform: rotate(2deg) translateX(-2px);
+    }
+    100% {
+        transform: rotate(0deg) translateX(0);
+    }
+}
+
+/* Bounce — lazy bounce on click */
+.sarthak--bounce {
+    animation: sarthak-bounce 0.5s ease-out;
+}
+
+@keyframes sarthak-bounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-10px) scale(1.02);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.01);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Glance direction */
+.sarthak--glance-right {
+    transform: translateX(4px);
+    transition: transform 0.6s ease;
+}
+
+.sarthak--glance-left {
+    transform: translateX(-4px);
+    transition: transform 0.6s ease;
+}
+
+/* ========================================
+   HOVER STATES
+   ======================================== */
+
+.sarthak-character:hover {
+    filter: drop-shadow(0 8px 28px rgba(0, 255, 247, 0.2));
+    transform: scale(1.05);
+}
+
+/* ========================================
+   SPEECH BUBBLE
+   ======================================== */
+
+.sarthak-speech {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 12px;
+    background: rgba(15, 15, 25, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 247, 0.2);
+    border-radius: 12px;
+    padding: 10px 16px;
+    max-width: 220px;
+    min-width: 100px;
+    pointer-events: none;
+    animation: speech-appear 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    z-index: 160;
+}
+
+.sarthak-speech span {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #e0e0e0;
+    letter-spacing: 0.01em;
+    display: block;
+    text-align: center;
+}
+
+/* Speech bubble tail */
+.sarthak-speech::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(15, 15, 25, 0.92);
+}
+
+@keyframes speech-appear {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(8px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* ========================================
+   STICKER REACTION
+   ======================================== */
+
+.sarthak-sticker {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    pointer-events: none;
+    animation: sticker-pop 1.8s ease-out forwards;
+    z-index: 160;
+}
+
+.sarthak-sticker span {
+    font-size: 1.6rem;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes sticker-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(8px);
+    }
+    15% {
+        opacity: 1;
+        transform: scale(1.15) translateY(-4px);
+    }
+    25% {
+        transform: scale(1) translateY(0);
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-12px);
+    }
+}
+
+/* ========================================
+   RESPONSIVE / ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .sarthak-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .sarthak-container {
+        display: none !important;
+    }
+}

@@ -1,0 +1,598 @@
+/* WhatsApp Intro - Fullscreen Landing */
+/* Entry Overlay for Audio Unlock */
+.wa-entry-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.wa-notification-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 20px;
+    width: 320px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideInNotif 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideInNotif {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.wa-notif-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.wa-notif-icon {
+    font-size: 1.2rem;
+}
+
+.wa-notif-app {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.wa-notif-time {
+    margin-left: auto;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.wa-notif-body {
+    margin-bottom: 15px;
+}
+
+.wa-notif-title {
+    display: block;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.wa-notif-text {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.wa-enter-btn {
+    width: 100%;
+    background: #25D366;
+    border: none;
+    color: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.wa-enter-btn:hover {
+    transform: scale(1.02);
+}
+
+.wa-entry-hint {
+    margin-top: 20px;
+    color: #666;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.whatsapp-intro {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-intro.blast-active {
+    background: radial-gradient(circle, #1a0a2e, #000);
+}
+
+.whatsapp-intro.fade-out {
+    animation: fadeToBlack 1s ease-out forwards;
+}
+
+@keyframes fadeToBlack {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        background: #000;
+    }
+}
+
+/* Phone Frame */
+.whatsapp-phone {
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    max-height: 90vh;
+    background: #0b141a;
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 60px rgba(37, 211, 102, 0.3);
+}
+
+@media (min-width: 500px) {
+    .whatsapp-phone {
+        border-radius: 40px;
+        border: 8px solid #1a1a1a;
+        max-height: 85vh;
+    }
+}
+
+/* Phone Status Bar */
+.phone-status-bar {
+    background: #1f2c34;
+    padding: 6px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.status-time {
+    font-weight: 600;
+}
+
+.status-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 0.75rem;
+}
+
+.status-icons .battery {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.7rem;
+    color: #4ade80;
+}
+
+/* WhatsApp Header */
+.wa-header {
+    background: #1f2c34;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+}
+
+.wa-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wa-back {
+    color: #00a884;
+    font-size: 1.4rem;
+    margin-right: 4px;
+}
+
+.wa-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wa-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wa-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.wa-name {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.wa-status {
+    font-size: 0.75rem;
+    color: #8696a0;
+}
+
+.wa-header-icons {
+    display: flex;
+    gap: 18px;
+    font-size: 1.2rem;
+    color: #8696a0;
+    align-items: center;
+}
+
+.wa-header-icons .video-icon {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.wa-header-icons .dropdown-arrow {
+    font-size: 0.7rem;
+    margin-left: -8px;
+}
+
+.wa-header-icons .menu-dots {
+    font-size: 1.4rem;
+    letter-spacing: -2px;
+}
+
+/* Chat Area - WhatsApp Dark Doodle Wallpaper */
+.wa-chat {
+    flex: 1;
+    background-color: #0b141a;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cdefs%3E%3Cstyle%3E.doodle%7Bfill:%231a2e35;fill-opacity:0.6%7D%3C/style%3E%3C/defs%3E%3C!-- Clocks --%3E%3Ccircle class='doodle' cx='30' cy='30' r='12'/%3E%3Cline x1='30' y1='30' x2='30' y2='22' stroke='%231a2e35' stroke-width='2'/%3E%3Cline x1='30' y1='30' x2='36' y2='30' stroke='%231a2e35' stroke-width='2'/%3E%3Ccircle class='doodle' cx='350' cy='180' r='10'/%3E%3C!-- Speech bubbles --%3E%3Cpath class='doodle' d='M80 20 Q95 20 95 35 Q95 50 80 50 L70 50 L65 58 L65 50 L60 50 Q45 50 45 35 Q45 20 60 20 Z'/%3E%3Cpath class='doodle' d='M280 80 Q295 80 295 92 Q295 104 280 104 L272 104 L268 110 L268 104 L262 104 Q248 104 248 92 Q248 80 262 80 Z'/%3E%3Cpath class='doodle' d='M60 280 Q72 280 72 290 Q72 300 60 300 L54 300 L51 305 L51 300 L46 300 Q34 300 34 290 Q34 280 46 280 Z'/%3E%3C!-- Hearts --%3E%3Cpath class='doodle' d='M150 40 C145 35 137 35 132 40 C127 45 127 53 132 58 L150 75 L168 58 C173 53 173 45 168 40 C163 35 155 35 150 40'/%3E%3Cpath class='doodle' d='M320 300 C316 296 310 296 306 300 C302 304 302 310 306 314 L320 327 L334 314 C338 310 338 304 334 300 C330 296 324 296 320 300' transform='scale(0.7) translate(100, 80)'/%3E%3C!-- Music notes --%3E%3Cpath class='doodle' d='M200 30 L200 50 C195 48 188 50 188 56 C188 62 195 64 200 62 L200 35 L215 30 L215 45 C210 43 203 45 203 51 C203 57 210 59 215 57 L215 30 Z'/%3E%3Cpath class='doodle' d='M380 120 L380 135 C376 133 371 135 371 140 C371 145 376 147 380 145 L380 122 L392 118 L392 130 C388 128 383 130 383 135 C383 140 388 142 392 140 L392 118 Z' transform='scale(0.8)'/%3E%3C!-- Phones/devices --%3E%3Crect class='doodle' x='130' y='100' width='16' height='28' rx='3'/%3E%3Crect class='doodle' x='350' y='50' width='14' height='24' rx='2'/%3E%3C!-- Emojis/faces --%3E%3Ccircle class='doodle' cx='250' cy='150' r='15'/%3E%3Ccircle class='doodle' cx='40' cy='150' r='12'/%3E%3Ccircle class='doodle' cx='180' cy='350' r='14'/%3E%3C!-- Dollar signs --%3E%3Ctext class='doodle' x='100' y='180' font-size='20' font-weight='bold'%3E$%3C/text%3E%3Ctext class='doodle' x='300' y='250' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C!-- Globes --%3E%3Ccircle class='doodle' cx='320' cy='40' r='14'/%3E%3Cellipse class='doodle' cx='320' cy='40' rx='14' ry='6' fill='none' stroke='%231a2e35' stroke-width='1.5'/%3E%3Ccircle class='doodle' cx='80' cy='350' r='12'/%3E%3C!-- Envelopes --%3E%3Cpath class='doodle' d='M45 220 L75 220 L75 245 L45 245 Z M45 220 L60 232 L75 220'/%3E%3Cpath class='doodle' d='M330 350 L355 350 L355 370 L330 370 Z M330 350 L342 360 L355 350'/%3E%3C!-- Cameras --%3E%3Crect class='doodle' x='160' y='200' width='30' height='22' rx='3'/%3E%3Ccircle class='doodle' cx='175' cy='211' r='7'/%3E%3Crect class='doodle' x='167' y='196' width='16' height='6' rx='2'/%3E%3C!-- Keys --%3E%3Ccircle class='doodle' cx='240' cy='280' r='8'/%3E%3Crect class='doodle' x='246' y='277' width='20' height='6' rx='1'/%3E%3C!-- Stars --%3E%3Cpath class='doodle' d='M380 250 L383 258 L392 258 L385 263 L388 272 L380 267 L372 272 L375 263 L368 258 L377 258 Z' transform='scale(0.8)'/%3E%3Cpath class='doodle' d='M20 100 L22 106 L28 106 L23 110 L25 116 L20 112 L15 116 L17 110 L12 106 L18 106 Z'/%3E%3C!-- Magnifying glass --%3E%3Ccircle class='doodle' cx='280' cy='200' r='10' fill='none' stroke='%231a2e35' stroke-width='3'/%3E%3Cline x1='287' y1='207' x2='295' y2='215' stroke='%231a2e35' stroke-width='3'/%3E%3C!-- Lightbulbs --%3E%3Cpath class='doodle' d='M120 300 C110 300 102 308 102 318 C102 325 106 330 112 333 L112 340 L128 340 L128 333 C134 330 138 325 138 318 C138 308 130 300 120 300'/%3E%3C!-- Thumbs up --%3E%3Cpath class='doodle' d='M220 350 C220 345 225 340 230 340 L245 340 L245 370 L230 370 C225 370 220 365 220 360 L220 350 M245 345 L255 345 L255 365 L245 365'/%3E%3C!-- Pins/locations --%3E%3Cpath class='doodle' d='M370 290 C362 290 356 296 356 304 C356 315 370 330 370 330 C370 330 384 315 384 304 C384 296 378 290 370 290' /%3E%3Ccircle cx='370' cy='303' r='4' fill='%230b141a'/%3E%3C!-- Wi-Fi symbols --%3E%3Cpath class='doodle' d='M50 65 Q60 55 70 65' fill='none' stroke='%231a2e35' stroke-width='2'/%3E%3Cpath class='doodle' d='M45 72 Q60 58 75 72' fill='none' stroke='%231a2e35' stroke-width='2'/%3E%3Cpath class='doodle' d='M40 79 Q60 61 80 79' fill='none' stroke='%231a2e35' stroke-width='2'/%3E%3Ccircle class='doodle' cx='60' cy='85' r='3'/%3E%3C!-- Documents --%3E%3Crect class='doodle' x='180' y='250' width='24' height='30' rx='2'/%3E%3Cline x1='184' y1='260' x2='200' y2='260' stroke='%230b141a' stroke-width='2'/%3E%3Cline x1='184' y1='266' x2='198' y2='266' stroke='%230b141a' stroke-width='2'/%3E%3Cline x1='184' y1='272' x2='195' y2='272' stroke='%230b141a' stroke-width='2'/%3E%3C!-- More scattered elements --%3E%3Ccircle class='doodle' cx='150' cy='160' r='6'/%3E%3Ccircle class='doodle' cx='90' cy='250' r='5'/%3E%3Crect class='doodle' x='260' y='30' width='12' height='12' rx='2'/%3E%3Crect class='doodle' x='10' cy='200' width='10' height='10' rx='1'/%3E%3C/svg%3E");
+    background-size: 400px 400px;
+    background-repeat: repeat;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.wa-date-badge {
+    align-self: center;
+    background: #182229;
+    padding: 5px 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.wa-date-badge span {
+    font-size: 0.75rem;
+    color: #8696a0;
+}
+
+/* Messages */
+.wa-msg {
+    max-width: 80%;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.wa-msg-sent {
+    align-self: flex-end;
+    background: #005c4b;
+    border-top-right-radius: 0;
+}
+
+.wa-msg-received {
+    align-self: flex-start;
+    background: #1f2c34;
+    border-top-left-radius: 0;
+}
+
+.wa-msg-special {
+    background: linear-gradient(135deg, #1a3a1a, #0a4a3a) !important;
+    border: 1px solid #25D366;
+    animation: specialPulse 0.5s ease;
+}
+
+@keyframes specialPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.wa-sender {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.wa-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    color: #e9edef;
+    line-height: 1.35;
+    word-wrap: break-word;
+}
+
+.wa-time {
+    font-size: 0.65rem;
+    color: #8696a0;
+    align-self: flex-end;
+    margin-top: 3px;
+}
+
+/* Message Animation */
+.wa-msg-animate {
+    animation: msgSlideIn 0.2s ease-out forwards;
+}
+
+@keyframes msgSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typing Indicator (reuse from AwardCeremony) */
+.typing-bubble {
+    padding: 10px 14px !important;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #8696a0;
+    border-radius: 50%;
+    animation: typingBounce 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+/* Input Bar */
+.wa-input {
+    background: #1f2c34;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+}
+
+.wa-input-field {
+    flex: 1;
+    background: #2a3942;
+    padding: 10px 16px;
+    border-radius: 25px;
+    color: #8696a0;
+    font-size: 0.9rem;
+}
+
+.wa-mic {
+    width: 40px;
+    height: 40px;
+    background: #00a884;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* Birthday Blast Overlay */
+.birthday-blast {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 102, 0, 0.3), rgba(0, 0, 0, 0.95));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: blastIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.fade-out .birthday-blast {
+    animation: blastIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), blastFadeOut 1s ease-out 0s forwards;
+}
+
+@keyframes blastFadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes blastIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.blast-text {
+    font-family: 'Bungee Shade', 'Bangers', cursive;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    background: linear-gradient(135deg, #ff6600, #fff01f, #ff2d95);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 2s ease infinite;
+    text-align: center;
+    padding: 0 20px;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.blast-subtext {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar */
+.wa-chat::-webkit-scrollbar {
+    width: 5px;
+}
+
+.wa-chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.wa-chat::-webkit-scrollbar-thumb {
+    background: #374248;
+    border-radius: 3px;
+}
+
+/* Message wrapper classes for typing indicators */
+.message-wrapper {
+    display: flex;
+    margin-bottom: 2px;
+}
+
+.message-wrapper.sent {
+    justify-content: flex-end;
+}
+
+.message-wrapper.received {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sent-bubble {
+    background: #005c4b;
+    border-top-right-radius: 0;
+}
+
+.received-bubble {
+    background: #1f2c34;
+    border-top-left-radius: 0;
+}
+
+.sender-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}

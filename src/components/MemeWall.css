@@ -1,0 +1,165 @@
+.meme-wall-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0a0d1a 50%, #0a0a0a 100%);
+}
+
+.meme-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    color: #00fff7;
+    text-shadow: 0 0 30px rgba(0, 255, 247, 0.4), 3px 3px 0 #bf00ff;
+    margin-bottom: 10px;
+}
+
+.meme-subtitle {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: #b0b0b0;
+    margin-bottom: 50px;
+}
+
+/* Upload Section */
+.upload-section {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+}
+
+.upload-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    text-align: center;
+    color: #39ff14;
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+    margin-bottom: 30px;
+}
+
+.photo-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.photo-slot {
+    background: rgba(255, 255, 255, 0.03);
+    border: 3px solid rgba(255, 45, 149, 0.4);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.photo-slot:hover {
+    border-color: #ff2d95;
+    box-shadow: 0 0 25px rgba(255, 45, 149, 0.3);
+    background: rgba(255, 45, 149, 0.1);
+}
+
+.slot-placeholder {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+}
+
+.slot-emoji {
+    font-size: 3rem;
+    animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+.slot-text {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+}
+
+/* Actual photo slots */
+.slot-image-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.slot-image {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    background: #1a1a1a;
+    border-radius: 12px 12px 0 0;
+}
+
+.slot-caption {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 0.9rem;
+    color: #ff2d95;
+    text-align: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* GIF Section Title */
+.gif-section-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    text-align: center;
+    color: #fff01f;
+    text-shadow: 0 0 15px rgba(255, 240, 31, 0.4);
+    margin: 40px 0 30px 0;
+}
+
+.meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.meme-card {
+    background: #1a1a2e;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid #333;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.meme-card:hover {
+    border-color: #00fff7;
+    box-shadow: 0 0 25px rgba(0, 255, 247, 0.3);
+}
+
+.meme-gif {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: #1a1a1a;
+    display: block;
+}
+
+.meme-caption {
+    padding: 14px 16px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 0.95rem;
+    color: #fff01f;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+}

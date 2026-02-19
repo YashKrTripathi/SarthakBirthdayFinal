@@ -1,0 +1,43 @@
+.ticker-banner {
+    background: linear-gradient(90deg, #ff2d95, #bf00ff, #00fff7, #39ff14, #fff01f, #ff6600, #ff2d95);
+    background-size: 200% 100%;
+    animation: tickerGradient 5s linear infinite;
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@keyframes tickerGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.ticker-track {
+    display: flex;
+    animation: tickerScroll 25s linear infinite;
+}
+
+.ticker-item {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    color: #0a0a0a;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 0 40px;
+    flex-shrink: 0;
+}
+
+@keyframes tickerScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}

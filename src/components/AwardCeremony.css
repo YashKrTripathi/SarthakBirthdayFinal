@@ -1,0 +1,292 @@
+/* WhatsApp Group Chat Section */
+.whatsapp-section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0d1418 50%, #0a0a0a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-container {
+    width: 100%;
+    max-width: 450px;
+    background: #0b141a;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgba(37, 211, 102, 0.2);
+    border: 2px solid #25D366;
+}
+
+/* WhatsApp Header */
+.whatsapp-header {
+    background: #1f2c34;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.back-arrow {
+    color: #00a884;
+    font-size: 1.2rem;
+}
+
+.group-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.group-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.group-members {
+    font-size: 0.7rem;
+    color: #8696a0;
+}
+
+.header-icons {
+    display: flex;
+    gap: 18px;
+    font-size: 1.1rem;
+}
+
+/* Chat Container */
+.chat-container {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23061118" width="100" height="100"/><circle fill="%230d1d26" cx="20" cy="20" r="3"/><circle fill="%230d1d26" cx="80" cy="40" r="2"/><circle fill="%230d1d26" cx="50" cy="70" r="4"/></svg>');
+    background-size: 100px;
+    padding: 15px;
+    min-height: 500px;
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.date-bubble {
+    align-self: center;
+    background: #182229;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.date-bubble span {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 0.75rem;
+    color: #8696a0;
+}
+
+/* Message Styles */
+.message-wrapper {
+    display: flex;
+    margin-bottom: 2px;
+}
+
+.message-wrapper.sent {
+    justify-content: flex-end;
+}
+
+.message-wrapper.received {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 6px 10px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.sent-bubble {
+    background: #005c4b;
+    border-top-right-radius: 0;
+}
+
+.received-bubble {
+    background: #1f2c34;
+    border-top-left-radius: 0;
+}
+
+.sender-name {
+    font-family: 'Bangers', cursive;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.message-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    color: #e9edef;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 0.65rem;
+    color: #8696a0;
+    text-align: right;
+    margin-top: 2px;
+    align-self: flex-end;
+}
+
+/* WhatsApp Input Bar */
+.whatsapp-input-bar {
+    background: #1f2c34;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.emoji-btn, .attach-btn, .camera-btn {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.input-field {
+    flex: 1;
+    background: #2a3942;
+    padding: 10px 15px;
+    border-radius: 25px;
+    color: #8696a0;
+    font-size: 0.9rem;
+}
+
+.mic-btn {
+    width: 40px;
+    height: 40px;
+    background: #00a884;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* Caption */
+.chat-caption {
+    margin-top: 30px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: #25D366;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.chat-caption.caption-visible {
+    opacity: 1;
+}
+
+/* Message fade in animation */
+.message-fade-in {
+    animation: messageFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes messageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typing Indicator */
+.typing-bubble {
+    padding: 10px 14px;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #8696a0;
+    border-radius: 50%;
+    animation: typingBounce 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+/* Scrollbar Styling */
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+    background: #0b141a;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background: #374248;
+    border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .whatsapp-container {
+        max-width: 100%;
+        border-radius: 0;
+    }
+    
+    .chat-container {
+        min-height: 400px;
+    }
+}
