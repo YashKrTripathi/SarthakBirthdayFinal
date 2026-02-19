@@ -11,7 +11,7 @@ const chatMessages = [
     { sender: 'Yash', message: 'Abe sirf ghumne hi chal lo bas movie rehendo', type: 'other', delay: 1200 },
     { sender: 'Krushna', message: 'Thike ghumne ke liye me ready hu', type: 'other', delay: 1100 },
     { sender: 'Sarthak', message: 'Me nhi aara kahi bhi', type: 'sarthak', delay: 2200 },
-    { sender: 'Yash', message: 'Kyu be aanaa saale', type: 'other', delay: 900 },
+    { sender: 'Yash', message: 'Kyu be aanaa ', type: 'other', delay: 900 },
     { sender: 'Sarthak', message: 'Nahi be man nhi hai', type: 'sarthak', delay: 2000 },
     { sender: 'Krushna', message: 'Kyu nhi hai man?', type: 'other', delay: 1000 },
     { sender: 'Sarthak', message: 'Nhi hai bas meko nhi jana kahi', type: 'sarthak', delay: 2200 },
